@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Mail\OrderShipped;
+use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -27,7 +28,9 @@ class ProcessPodcast implements ShouldQueue
      */
     public function handle(): void
     {
-        $randomNumber = rand(5, 30);
-        Mail::to('paganuzzi@gmail.com')->queue(new OrderShipped($randomNumber));
+        $randomNumber = rand(30, 90);
+        $time = Carbon::now()->calendar();
+        sleep($randomNumber);
+        Mail::to('paganuzzi@gmail.com')->queue(new OrderShipped($time, $randomNumber));
     }
 }

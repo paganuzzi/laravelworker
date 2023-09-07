@@ -15,7 +15,7 @@ class OrderShipped extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct(public int $randomNumber)
+    public function __construct(public string $time, private int $sleep)
     {
     }
 
@@ -24,8 +24,9 @@ class OrderShipped extends Mailable
      */
     public function envelope(): Envelope
     {
+
         return new Envelope(
-            subject: 'Order Shipped',
+            subject: "TimeStamp:$this->time - Sleep:$this->sleep ",
         );
     }
 

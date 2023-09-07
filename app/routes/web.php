@@ -1,6 +1,7 @@
 <?php
 
 use App\Jobs\ProcessPodcast;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,4 +21,7 @@ Route::get('/', function () {
 
 Route::get('/queue', function () {
     ProcessPodcast::dispatch();
+});
+Route::get('/carbon', function () {
+    echo Carbon::now()->calendar();
 });

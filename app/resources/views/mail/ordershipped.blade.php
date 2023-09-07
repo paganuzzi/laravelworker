@@ -1,1 +1,1 @@
-shipped {{$randomNumber}}
+shipped {{$time}}
